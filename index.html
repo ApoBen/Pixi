@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixi - Pixel Art Converter</title>
+    <meta name="description" content="Turn your photos into amazing pixel art with Pixi.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="background-animation">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="app-container">
+
+        <header>
+            <h1>Pixi</h1>
+            <p>Turn images into retro pixel art.</p>
+        </header>
+
+        <main class="glass-panel">
+
+            <div id="drop-zone" class="drop-zone">
+                <canvas id="pixel-canvas"></canvas>
+                <div class="upload-prompt" id="upload-prompt">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 16V8M12 8L9 11M12 8L15 11" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M3 15V16C3 18.2091 4.79086 20 7 20H17C19.2091 20 21 18.2091 21 16V15"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <p>Drop image to <b>Pixi</b>-late</p>
+                    <input type="file" id="file-input" accept="image/*" hidden>
+                </div>
+            </div>
+
+            <div class="controls disabled" id="controls">
+
+                <div class="control-group">
+                    <label for="resolution-slider">
+                        Resolution
+                        <span id="resolution-value" class="value-badge">64 px</span>
+                    </label>
+                    <!-- Using a range that maps to powers of two in JS (e.g. 1=32, 2=64... 6=1024) -->
+                    <input type="range" id="resolution-slider" min="1" max="5" step="1" value="2">
+                    <div class="ticks">
+                        <span>32</span>
+                        <span>64</span>
+                        <span>128</span>
+                        <span>256</span>
+                        <span>512</span>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="palette-slider">
+                        Color Palette Size
+                        <span id="palette-value" class="value-badge">16 Colors</span>
+                    </label>
+                    <input type="range" id="palette-slider" min="2" max="64" step="2" value="16">
+                </div>
+
+                <div class="control-group">
+                    <label for="detail-slider">
+                        Detail / Edge Sharpening
+                        <span id="detail-value" class="value-badge">None</span>
+                    </label>
+                    <input type="range" id="detail-slider" min="0" max="100" step="10" value="0">
+                </div>
+
+                <div class="actions">
+                    <button id="download-btn" class="btn-primary">
+                        Download Pixel Art
+                    </button>
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
